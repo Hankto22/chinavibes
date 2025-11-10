@@ -1,0 +1,28 @@
+{
+  "name": "Red Crane Trading - China Shipping & Trading",
+  "short_name": "Red Crane",
+  "description": "Your trusted partner for China-based shipping and trading services. Inspired by the elegant Chinese crane — a symbol of long life and reliability.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#DC2626",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity", "shopping"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/vite.svg",
+      "sizes": "1280x720",
+      "type": "image/svg+xml",
+      "form_factor": "wide"
+    }
+  ]
+}
