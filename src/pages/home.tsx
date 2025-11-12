@@ -1,111 +1,180 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import NavBar from '../components/navBar';
 import Hero from '../components/heroSection';
-import ContactSection from '../components/contactSection';
+import WhyUs from '../components/WhyUs';
+import ServicesSection from '../components/servicesSection';
+import Footer from '../components/footer';
 
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen">
+    <div className="page-container">
       <NavBar />
-      <Hero />
-      <section id="services-section" className="min-h-screen bg-gray-50 px-4 py-12">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-semibold text-primary-blue mb-8 text-center">Explore Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="card card-hover text-center">
-              <div className="text-4xl mb-4">📦</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Product Sourcing</h3>
-              <p className="text-gray-600">Find the best suppliers and negotiate optimal prices</p>
-            </div>
-            <div className="card card-hover text-center">
-              <div className="text-4xl mb-4">🚢</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Global Shipping</h3>
-              <p className="text-gray-600">Air & sea freight solutions worldwide</p>
-            </div>
-            <div className="card card-hover text-center">
-              <div className="text-4xl mb-4">✅</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Quality Control</h3>
-              <p className="text-gray-600">Rigorous inspection and compliance checks</p>
-            </div>
-          </div>
-          <div className="text-center mt-8">
-            <Link to="/services" className="btn-primary">
-              View All Services
-            </Link>
-          </div>
-        </div>
-      </section>
-      <ContactSection />
+      <main className="main-content">
+        <Hero />
+        <WhyUs />
+        <ServicesSection />
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-primary-red rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">RC</span>
-                </div>
-                <span className="text-xl font-bold">Red Crane Trading</span>
-              </div>
-              <p className="text-gray-300 mb-4 max-w-md">
-                Your trusted partner for China-based shipping and trading services.
-                Inspired by the elegant Chinese crane — a symbol of long life and reliability.
+        {/* Testimonials Section */}
+        <section className="section section-alt">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                What Our Clients Say
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Trusted by businesses across Africa for reliable China trading solutions
               </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <span className="sr-only">Facebook</span>
-                  📘
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <span className="sr-only">Twitter</span>
-                  🐦
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <span className="sr-only">LinkedIn</span>
-                  💼
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <span className="sr-only">WhatsApp</span>
-                  📱
-                </a>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-primary-green bg-opacity-10 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-semibold text-primary-green">K</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-900">Kenyan Electronics Ltd</h4>
+                    <p className="text-sm text-gray-600">Nairobi, Kenya</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 italic">
+                  "Red Crane Trading Co. helped us source high-quality electronics at competitive prices. Their supplier verification process gave us complete peace of mind."
+                </p>
+                <div className="mt-4 flex text-yellow-400">
+                  ★★★★★
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-primary-red bg-opacity-10 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-semibold text-primary-red">G</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-900">Ghana Textiles Inc</h4>
+                    <p className="text-sm text-gray-600">Accra, Ghana</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 italic">
+                  "The market tours were invaluable. We found suppliers we never would have discovered on our own. Excellent service throughout."
+                </p>
+                <div className="mt-4 flex text-yellow-400">
+                  ★★★★★
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-primary-blue bg-opacity-10 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-semibold text-primary-blue">N</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-900">Namibia Furniture Co</h4>
+                    <p className="text-sm text-gray-600">Windhoek, Namibia</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 italic">
+                  "From initial contact to final delivery, everything was handled professionally. Their quality control ensured we received exactly what we ordered."
+                </p>
+                <div className="mt-4 flex text-yellow-400">
+                  ★★★★★
+                </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-gray-300 hover:text-white transition-colors">Home</a></li>
-                <li><a href="/about" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
-                <li><a href="/services" className="text-gray-300 hover:text-white transition-colors">Services</a></li>
-                <li><a href="/track" className="text-gray-300 hover:text-white transition-colors">Track Shipment</a></li>
-                <li><a href="/login" className="text-gray-300 hover:text-white transition-colors">Login</a></li>
-              </ul>
+        {/* FAQ Section */}
+        <section className="section">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-gray-600">
+                Common questions about our services
+              </p>
             </div>
 
-            {/* Contact Info */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li>📧 support@chinavibes.com</li>
-                <li>📱 +254-xxx-xxx-xxx</li>
-                <li>📍 Nairobi, Kenya</li>
-                <li>🕒 Mon-Fri: 9AM-6PM EAT</li>
-              </ul>
+            <div className="space-y-6">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">How long does the sourcing process take?</h3>
+                <p className="text-gray-700">Typically 2-4 weeks from initial request to supplier identification and price negotiation. Complex products may take longer.</p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Do you offer refunds if I'm not satisfied?</h3>
+                <p className="text-gray-700">We stand behind our service. If we cannot meet your requirements, we offer full refunds for our sourcing fees. Product quality issues are handled through our supplier guarantee.</p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">What payment methods do you accept?</h3>
+                <p className="text-gray-700">We accept bank transfers, mobile money (M-Pesa, Airtel Money), and international wire transfers. Payment terms can be arranged for established clients.</p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Do you handle customs clearance?</h3>
+                <p className="text-gray-700">Yes, we provide complete customs clearance services for shipments to Kenya, Ghana, Nigeria, Namibia, and other African countries.</p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Red Crane Trading. All rights reserved.</p>
-            <p className="mt-2 text-sm">
-              Serving Kenya, Ghana, Nigeria, Namibia and beyond with excellence in China-Africa trade.
-            </p>
+        {/* Contact Information Section */}
+        <section className="section section-alt">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                📞 Contact & Support
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Get in touch with our expert team for all your China trading and shipping needs
+              </p>
+            </div>
+
+            <div className="max-w-2xl mx-auto">
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary-green bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl">📍</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Location</h4>
+                    <p className="text-gray-600">Nairobi, Kenya</p>
+                    <p className="text-sm text-gray-600">Serving East & West Africa</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary-red bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl">🕒</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Business Hours</h4>
+                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM EAT</p>
+                    <p className="text-gray-600">Saturday: 10:00 AM - 4:00 PM EAT</p>
+                    <p className="text-gray-600">Sunday: Emergency support only</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="mt-8 p-6 bg-white rounded-lg shadow-md border border-gray-100">
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <a href="/track" className="btn-outline text-center text-sm">
+                    Track Shipment
+                  </a>
+                  <a href="/services" className="btn-primary text-center text-sm">
+                    View Services
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </footer>
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 };

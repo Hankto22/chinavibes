@@ -169,3 +169,82 @@ Share your 📅 travel dates & 🛒 product interests to plan your trip smoothly
  for the colors use 
  Poster colors
  :Red and blue is play
+## ✅ Website Development Checklist for Red Crane Trading Co.
+
+### 🖼 Branding & Visual Identity
+- [ ] Use **red and blue** as primary accent colors (as per "red and blue is the play")
+- [ ] Incorporate a **Chinese crane motif** in the logo or hero section to reflect longevity and reliability
+- [ ] Choose fonts that balance **professionalism and approachability**
+- [ ] Include **high-quality visuals** of sourcing, shipping, market tours, and China travel
+
+---
+
+### 🧭 Navigation & Structure
+- [ ] Clear top-level menu: Home • Services • Sourcing Guide • China Trips • Fees • Contact
+- [ ] Sticky header with CTA buttons (e.g., "Request Sourcing" or "Plan Your Trip")
+- [ ] Mobile-first responsive layout with collapsible menus
+
+---
+
+### 📦 Services Section
+Split into two categories:
+
+#### Core Services
+- [ ] Product sourcing
+- [ ] Supplier checks
+- [ ] Price negotiation
+- [ ] Order follow-up
+- [ ] Quality control
+- [ ] Shipping (air & sea)
+- [ ] Market tours
+- [ ] Translation
+- [ ] China trip support
+
+#### Additional Services
+- [ ] Money exchange (Kenya, Ghana, Nigeria)
+- [ ] Hotel bookings
+- [ ] Visa assistance (Kenya, Namibia, Ghana, Nigeria)
+- [ ] Flight ticket bookings
+- [ ] Airport pick-ups
+
+Use icons for each service to enhance visual clarity.
+
+---
+
+### 📩 Sourcing Request Form
+- [ ] Upload field for product photo or link
+- [ ] Quantity input
+- [ ] Specification textarea
+- [ ] Branding/packaging details textarea
+- [ ] Optional: WhatsApp integration for fast submissions
+
+---
+
+### ✈ China Trip Planning Form
+- [ ] Travel dates picker
+- [ ] Product interests checklist or freeform input
+- [ ] Optional: Add itinerary builder or downloadable PDF planner
+
+---
+
+### 💼 Pricing Section
+- [ ] Clear breakdown:
+  - Sourcing: $60–$100/day
+  - Market tours: $60/day (or $100/day during peak seasons)
+- [ ] Highlight peak season pricing with visual cues (e.g., calendar icons or seasonal badges)
+
+---
+
+### 📞 Contact & CTA Integration
+- [ ] WhatsApp, email, and phone number prominently displayed
+- [ ] Social media links (Instagram, Facebook, etc.)
+- [ ] CTA buttons across pages: "Start Sourcing" • "Plan My Trip" • "Get a Quote"
+
+---
+
+### 🔐 Trust & Legitimacy
+- [ ] Testimonials or client success stories
+- [ ] FAQ section (e.g., "How long does sourcing take?" "Do you offer refunds?")
+- [ ] Optional: Add a blog or insights section for market trends and sourcing tips
+
+---

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Charts from '../charts/chart';
 import { useAuth } from '../context/authContext';
-import Sidebar from './sidebar';
+// import Sidebar from './sidebar';
 
 interface Stats {
   monthlyShipments: { labels: string[]; data: number[] };
@@ -14,7 +14,7 @@ interface Stats {
 export default function AdminPanel() {
   const { role } = useAuth();
   const [stats, setStats] = useState<Stats | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     // Mock data for demonstration
@@ -46,15 +46,15 @@ export default function AdminPanel() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+    <div className="min-h-screen bg-gray-50 flex justify-center">
+      {/* <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} /> */}
 
-      <div className="flex-1 lg:ml-0">
+      <div className="flex-1 max-w-7xl">
         {/* Mobile menu button */}
-        <div className="lg:hidden bg-white shadow-sm border-b border-gray-200 px-4 py-3">
+        {/* <div className="lg:hidden bg-white shadow-sm border-b border-gray-200 px-4 py-3">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="inline-flex items-center justify-center p-1 rounded-md text-gray-700 hover:text-primary-blue hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-blue"
+            className="inline-flex items-center justify-center p-1 rounded-md text-gray-700 hover:text-primary-green hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-green"
           >
             <span className="sr-only">Open sidebar</span>
             <svg className="block h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -62,7 +62,7 @@ export default function AdminPanel() {
             </svg>
           </button>
           <span className="ml-3 text-lg font-semibold text-gray-900">Admin Dashboard</span>
-        </div>
+        </div> */}
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
@@ -73,19 +73,19 @@ export default function AdminPanel() {
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="card text-center">
-            <div className="text-2xl font-bold text-primary-blue mb-2">{stats?.total || 0}</div>
+            <div className="text-2xl font-bold text-primary-green mb-2">{stats?.total || 0}</div>
             <div className="text-sm text-gray-600">Total Shipments</div>
           </div>
           <div className="card text-center">
-            <div className="text-2xl font-bold text-primary-red mb-2">{stats?.successRate || 0}%</div>
+            <div className="text-2xl font-bold text-secondary-green mb-2">{stats?.successRate || 0}%</div>
             <div className="text-sm text-gray-600">Success Rate</div>
           </div>
           <div className="card text-center">
-            <div className="text-2xl font-bold text-primary-blue mb-2">4</div>
+            <div className="text-2xl font-bold text-primary-green mb-2">4</div>
             <div className="text-sm text-gray-600">Active Regions</div>
           </div>
           <div className="card text-center">
-            <div className="text-2xl font-bold text-primary-red mb-2">24/7</div>
+            <div className="text-2xl font-bold text-secondary-green mb-2">24/7</div>
             <div className="text-sm text-gray-600">Support Available</div>
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function AdminPanel() {
           <Charts stats={stats} />
         ) : (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-green mx-auto"></div>
             <p className="mt-4 text-gray-600">Loading analytics...</p>
           </div>
         )}

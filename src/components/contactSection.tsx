@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './contactSection.css';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -63,12 +64,12 @@ const ContactSection: React.FC = () => {
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-primary-blue bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-primary-green bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <span className="text-xl">📧</span>
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-1">Email</h4>
-                  <a href="mailto:support@chinavibes.com" className="text-primary-blue hover:text-secondary-blue transition-colors">
+                  <a href="mailto:support@chinavibes.com" className="text-primary-green hover:text-secondary-green transition-colors">
                     support@chinavibes.com
                   </a>
                 </div>
@@ -79,16 +80,19 @@ const ContactSection: React.FC = () => {
                   <span className="text-xl">📱</span>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-1">Phone</h4>
-                  <a href="tel:+254-xxx-xxx-xxx" className="text-primary-red hover:text-secondary-red transition-colors">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-1">Phone & WhatsApp</h4>
+                  <a href="tel:+254-xxx-xxx-xxx" className="text-primary-red hover:text-secondary-red transition-colors block">
                     +254-xxx-xxx-xxx
+                  </a>
+                  <a href="https://wa.me/254xxxxxxxxx" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors block mt-1">
+                    WhatsApp: +254-xxx-xxx-xxx
                   </a>
                   <p className="text-sm text-gray-600 mt-1">Available 24/7 for urgent inquiries</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-primary-blue bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-primary-green bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <span className="text-xl">📍</span>
                 </div>
                 <div>
@@ -109,16 +113,30 @@ const ContactSection: React.FC = () => {
                   <p className="text-gray-600">Sunday: Emergency support only</p>
                 </div>
               </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-primary-blue bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">📱</span>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-1">Social Media</h4>
+                  <div className="flex space-x-4">
+                    <a href="https://facebook.com/redcranetrading" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 transition-colors">📘 Facebook</a>
+                    <a href="https://instagram.com/redcranetrading" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-700 transition-colors">📷 Instagram</a>
+                    <a href="https://linkedin.com/company/redcranetrading" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-800 transition-colors">💼 LinkedIn</a>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Quick Actions */}
             <div className="mt-8 p-6 bg-white rounded-lg shadow-md border border-gray-100">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <a href="/track" className="btn-outline text-center text-sm">
+                <a href="/track" className="btn btn-outline text-center text-sm">
                   Track Shipment
                 </a>
-                <a href="/services" className="btn-primary text-center text-sm">
+                <a href="/services" className="btn btn-primary text-center text-sm">
                   View Services
                 </a>
               </div>
@@ -142,7 +160,7 @@ const ContactSection: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent transition-colors"
                     placeholder="Your full name"
                   />
                 </div>
@@ -158,7 +176,7 @@ const ContactSection: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -175,7 +193,7 @@ const ContactSection: React.FC = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent transition-colors"
                     placeholder="+254 xxx xxx xxx"
                   />
                 </div>
@@ -190,7 +208,7 @@ const ContactSection: React.FC = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent transition-colors"
                   >
                     <option value="">Select a subject</option>
                     <option value="sourcing">Product Sourcing</option>
@@ -215,7 +233,7 @@ const ContactSection: React.FC = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors resize-vertical"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent transition-colors resize-vertical"
                   placeholder="Tell us about your requirements..."
                 />
               </div>
@@ -223,7 +241,7 @@ const ContactSection: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>

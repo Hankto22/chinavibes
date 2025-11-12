@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 
@@ -58,9 +58,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       >
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-200">
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-secondary-green bg-opacity-20">
             <div className="flex flex-col">
-              <span className="text-lg font-bold text-gray-900">Dashboard</span>
+              <span className="text-lg font-bold text-primary-green">Dashboard</span>
               <span className="text-xs text-gray-500">Navigation</span>
             </div>
             <button
@@ -83,8 +83,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                   onClick={onClose}
                   className={`flex items-center space-x-4 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive(item.path)
-                      ? 'bg-primary-blue text-white shadow-md'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-primary-blue hover:translate-x-1'
+                      ? 'bg-primary-green text-white shadow-md'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-primary-green hover:translate-x-1'
                   }`}
                 >
                   <span className="text-base">{item.icon}</span>

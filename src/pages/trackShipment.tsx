@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NavBar from '../components/navBar';
+import Footer from '../components/footer';
 import toast from 'react-hot-toast';
 
 interface Shipment {
@@ -58,40 +59,106 @@ export default function TrackShipment() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="page-container">
       <NavBar />
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+      <main className="main-content">
+        {/* Hero Section */}
+        <div style={{
+          background: 'linear-gradient(135deg, #2d5a4a 0%, #1e3a32 100%)',
+          color: 'white',
+          padding: '4rem 2rem',
+          textAlign: 'center'
+        }}>
+          <h1 style={{
+            fontSize: '3.5rem',
+            margin: '0 0 1rem 0',
+            fontWeight: 'bold'
+          }}>
             Track Your Shipment
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p style={{
+            fontSize: '1.3rem',
+            maxWidth: '700px',
+            margin: '0 auto',
+            lineHeight: '1.6',
+            opacity: '0.9'
+          }}>
             Enter your tracking ID below to get real-time updates on your shipment status
           </p>
         </div>
 
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '4rem 2rem'
+        }}>
+
         {/* Tracking Form */}
-        <div className="card mb-8">
-          <div className="flex flex-col sm:flex-row gap-4">
+        <div style={{
+          backgroundColor: 'white',
+          padding: '2rem',
+          borderRadius: '16px',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+          marginBottom: '2rem'
+        }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem'
+          }}>
             <input
               type="text"
               value={trackingId}
               onChange={(e) => setTrackingId(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Enter Tracking ID (e.g., RCT001234)"
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent text-lg"
+              style={{
+                flex: 1,
+                padding: '1rem',
+                border: '1px solid #ccc',
+                borderRadius: '8px',
+                fontSize: '1.1rem',
+                outline: 'none'
+              }}
+              onFocus={(e) => e.currentTarget.style.borderColor = '#2d5a4a'}
+              onBlur={(e) => e.currentTarget.style.borderColor = '#ccc'}
             />
             <button
               onClick={handleTrack}
               disabled={isLoading}
-              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed px-8 py-3 text-lg"
+              style={{
+                backgroundColor: isLoading ? '#ccc' : '#2d5a4a',
+                color: 'white',
+                border: 'none',
+                padding: '1rem 2rem',
+                borderRadius: '25px',
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                cursor: isLoading ? 'not-allowed' : 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                if (!isLoading) {
+                  e.currentTarget.style.transform = 'translateY(-2px)'
+                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(45, 90, 74, 0.3)'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isLoading) {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = 'none'
+                }
+              }}
             >
               {isLoading ? 'Searching...' : 'Track Shipment'}
             </button>
           </div>
 
-          <div className="mt-4 text-sm text-gray-600">
+          <div style={{
+            marginTop: '1rem',
+            fontSize: '0.9rem',
+            color: '#666'
+          }}>
             <p>💡 <strong>Demo Tracking IDs:</strong> RCT001234, RCT005678, RCT009012</p>
           </div>
         </div>
@@ -100,115 +167,390 @@ export default function TrackShipment() {
         {shipment && (
           <div className="space-y-6">
             {/* Status Overview */}
-            <div className="card">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Shipment Status</h2>
+            <div style={{
+              backgroundColor: 'white',
+              padding: '2rem',
+              borderRadius: '16px',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+              marginBottom: '2rem'
+            }}>
+              <h2 style={{
+                fontSize: '2.5rem',
+                color: '#2d5a4a',
+                marginBottom: '2rem',
+                fontWeight: 'bold',
+                textAlign: 'center'
+              }}>Shipment Status</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary-blue bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-2xl">📦</span>
-                  </div>
-                  <h3 className="font-semibold text-gray-900">Tracking ID</h3>
-                  <p className="text-primary-blue font-mono">{shipment.trackingId}</p>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                gap: '2rem'
+              }}>
+                <div style={{
+                  textAlign: 'center',
+                  backgroundColor: 'white',
+                  padding: '2rem',
+                  borderRadius: '16px',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+                }}>
+                  <div style={{
+                    width: '80px',
+                    height: '80px',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1rem',
+                    fontSize: '3rem'
+                  }}>📦</div>
+                  <h3 style={{
+                    fontSize: '1.4rem',
+                    color: '#2d5a4a',
+                    marginBottom: '1rem',
+                    fontWeight: 'bold'
+                  }}>Tracking ID</h3>
+                  <p style={{
+                    fontSize: '1.1rem',
+                    color: '#81C784',
+                    fontFamily: 'monospace'
+                  }}>{shipment.trackingId}</p>
                 </div>
 
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary-red bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-2xl">🚚</span>
-                  </div>
-                  <h3 className="font-semibold text-gray-900">Status</h3>
-                  <p className="text-primary-red font-semibold">{shipment.status}</p>
+                <div style={{
+                  textAlign: 'center',
+                  backgroundColor: 'white',
+                  padding: '2rem',
+                  borderRadius: '16px',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+                }}>
+                  <div style={{
+                    width: '80px',
+                    height: '80px',
+                    backgroundColor: 'rgba(244, 67, 54, 0.1)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1rem',
+                    fontSize: '3rem'
+                  }}>🚚</div>
+                  <h3 style={{
+                    fontSize: '1.4rem',
+                    color: '#2d5a4a',
+                    marginBottom: '1rem',
+                    fontWeight: 'bold'
+                  }}>Status</h3>
+                  <p style={{
+                    fontSize: '1.1rem',
+                    color: '#f44336',
+                    fontWeight: 'bold'
+                  }}>{shipment.status}</p>
                 </div>
 
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary-blue bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-2xl">📍</span>
-                  </div>
-                  <h3 className="font-semibold text-gray-900">Current Location</h3>
-                  <p className="text-gray-700">{shipment.currentLocation}</p>
+                <div style={{
+                  textAlign: 'center',
+                  backgroundColor: 'white',
+                  padding: '2rem',
+                  borderRadius: '16px',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+                }}>
+                  <div style={{
+                    width: '80px',
+                    height: '80px',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1rem',
+                    fontSize: '3rem'
+                  }}>📍</div>
+                  <h3 style={{
+                    fontSize: '1.4rem',
+                    color: '#2d5a4a',
+                    marginBottom: '1rem',
+                    fontWeight: 'bold'
+                  }}>Current Location</h3>
+                  <p style={{
+                    fontSize: '1.1rem',
+                    color: '#555'
+                  }}>{shipment.currentLocation}</p>
                 </div>
 
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary-red bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-2xl">📅</span>
-                  </div>
-                  <h3 className="font-semibold text-gray-900">ETA</h3>
-                  <p className="text-primary-blue font-semibold">{shipment.eta}</p>
+                <div style={{
+                  textAlign: 'center',
+                  backgroundColor: 'white',
+                  padding: '2rem',
+                  borderRadius: '16px',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+                }}>
+                  <div style={{
+                    width: '80px',
+                    height: '80px',
+                    backgroundColor: 'rgba(244, 67, 54, 0.1)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1rem',
+                    fontSize: '3rem'
+                  }}>📅</div>
+                  <h3 style={{
+                    fontSize: '1.4rem',
+                    color: '#2d5a4a',
+                    marginBottom: '1rem',
+                    fontWeight: 'bold'
+                  }}>ETA</h3>
+                  <p style={{
+                    fontSize: '1.1rem',
+                    color: '#81C784',
+                    fontWeight: 'bold'
+                  }}>{shipment.eta}</p>
                 </div>
               </div>
             </div>
 
             {/* Detailed Information */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="card">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Route Information</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Origin:</span>
-                    <span className="font-semibold">{shipment.origin}</span>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+              gap: '2rem',
+              marginBottom: '2rem'
+            }}>
+              <div style={{
+                backgroundColor: 'white',
+                padding: '2rem',
+                borderRadius: '16px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+              }}>
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  color: '#2d5a4a',
+                  marginBottom: '1.5rem',
+                  fontWeight: 'bold'
+                }}>Route Information</h3>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}>
+                    <span style={{color: '#666'}}>Origin:</span>
+                    <span style={{fontWeight: 'bold'}}>{shipment.origin}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Destination:</span>
-                    <span className="font-semibold">{shipment.destination}</span>
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}>
+                    <span style={{color: '#666'}}>Destination:</span>
+                    <span style={{fontWeight: 'bold'}}>{shipment.destination}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Current Location:</span>
-                    <span className="font-semibold text-primary-blue">{shipment.currentLocation}</span>
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}>
+                    <span style={{color: '#666'}}>Current Location:</span>
+                    <span style={{fontWeight: 'bold', color: '#81C784'}}>{shipment.currentLocation}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="card">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Last Update</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Last Updated:</span>
-                    <span className="font-semibold">{shipment.lastUpdate}</span>
+              <div style={{
+                backgroundColor: 'white',
+                padding: '2rem',
+                borderRadius: '16px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+              }}>
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  color: '#2d5a4a',
+                  marginBottom: '1.5rem',
+                  fontWeight: 'bold'
+                }}>Last Update</h3>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}>
+                    <span style={{color: '#666'}}>Last Updated:</span>
+                    <span style={{fontWeight: 'bold'}}>{shipment.lastUpdate}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Next Update:</span>
-                    <span className="font-semibold">Within 24 hours</span>
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}>
+                    <span style={{color: '#666'}}>Next Update:</span>
+                    <span style={{fontWeight: 'bold'}}>Within 24 hours</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Progress Visualization */}
-            <div className="card">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Shipment Progress</h3>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <div className="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Order Placed - Completed</span>
+            <div style={{
+              backgroundColor: 'white',
+              padding: '2rem',
+              borderRadius: '16px',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+              marginBottom: '2rem'
+            }}>
+              <h3 style={{
+                fontSize: '1.5rem',
+                color: '#2d5a4a',
+                marginBottom: '1.5rem',
+                fontWeight: 'bold'
+              }}>Shipment Progress</h3>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem'
+              }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                  <div style={{
+                    width: '16px',
+                    height: '16px',
+                    backgroundColor: '#4CAF50',
+                    borderRadius: '50%',
+                    marginRight: '1rem'
+                  }}></div>
+                  <span style={{color: '#555'}}>Order Placed - Completed</span>
                 </div>
-                <div className="flex items-center">
-                  <div className="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Processing - Completed</span>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                  <div style={{
+                    width: '16px',
+                    height: '16px',
+                    backgroundColor: '#4CAF50',
+                    borderRadius: '50%',
+                    marginRight: '1rem'
+                  }}></div>
+                  <span style={{color: '#555'}}>Processing - Completed</span>
                 </div>
-                <div className="flex items-center">
-                  <div className="w-4 h-4 bg-primary-blue rounded-full mr-3 animate-pulse"></div>
-                  <span className="text-primary-blue font-semibold">In Transit - Current</span>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                  <div style={{
+                    width: '16px',
+                    height: '16px',
+                    backgroundColor: '#81C784',
+                    borderRadius: '50%',
+                    marginRight: '1rem',
+                    animation: 'pulse 2s infinite'
+                  }}></div>
+                  <span style={{color: '#81C784', fontWeight: 'bold'}}>In Transit - Current</span>
                 </div>
-                <div className="flex items-center">
-                  <div className="w-4 h-4 bg-gray-300 rounded-full mr-3"></div>
-                  <span className="text-gray-500">Delivered - Pending</span>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                  <div style={{
+                    width: '16px',
+                    height: '16px',
+                    backgroundColor: '#ccc',
+                    borderRadius: '50%',
+                    marginRight: '1rem'
+                  }}></div>
+                  <span style={{color: '#999'}}>Delivered - Pending</span>
                 </div>
               </div>
             </div>
 
             {/* Support Information */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-900 mb-2">Need Help?</h3>
-              <p className="text-blue-800 mb-4">
+            <div style={{
+              backgroundColor: '#e3f2fd',
+              border: '1px solid #bbdefb',
+              borderRadius: '8px',
+              padding: '2rem'
+            }}>
+              <h3 style={{
+                fontSize: '1.5rem',
+                color: '#1976d2',
+                marginBottom: '0.5rem',
+                fontWeight: 'bold'
+              }}>Need Help?</h3>
+              <p style={{
+                color: '#1976d2',
+                marginBottom: '1.5rem'
+              }}>
                 If you have any questions about your shipment, our support team is here to help.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a href="mailto:support@chinavibes.com" className="btn-outline text-center">
-                  Email Support
-                </a>
-                <a href="tel:+254-xxx-xxx-xxx" className="btn-primary text-center">
-                  Call Support
-                </a>
+              <div style={{
+                display: 'flex',
+                gap: '1rem',
+                flexWrap: 'wrap'
+              }}>
+                <button style={{
+                  backgroundColor: 'transparent',
+                  color: '#2d5a4a',
+                  border: '2px solid #2d5a4a',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '25px',
+                  fontSize: '1rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  textAlign: 'center'
+                }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#2d5a4a'
+                    e.currentTarget.style.color = 'white'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent'
+                    e.currentTarget.style.color = '#2d5a4a'
+                  }}
+                  onClick={() => window.location.href = 'mailto:support@chinavibes.com'}
+                >
+                  📧 Email Support
+                </button>
+                <button style={{
+                  backgroundColor: '#2d5a4a',
+                  color: 'white',
+                  border: 'none',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '25px',
+                  fontSize: '1rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  textAlign: 'center'
+                }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)'
+                    e.currentTarget.style.boxShadow = '0 8px 16px rgba(45, 90, 74, 0.3)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)'
+                    e.currentTarget.style.boxShadow = 'none'
+                  }}
+                  onClick={() => window.location.href = 'tel:+254-xxx-xxx-xxx'}
+                >
+                  📞 Call Support
+                </button>
               </div>
             </div>
           </div>
@@ -216,34 +558,100 @@ export default function TrackShipment() {
 
         {/* Help Section */}
         {!shipment && (
-          <div className="card text-center">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">How to Track Your Shipment</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <div style={{
+            backgroundColor: 'white',
+            padding: '2rem',
+            borderRadius: '16px',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+            textAlign: 'center'
+          }}>
+            <h3 style={{
+              fontSize: '1.5rem',
+              color: '#2d5a4a',
+              marginBottom: '2rem',
+              fontWeight: 'bold'
+            }}>How to Track Your Shipment</h3>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '2rem',
+              textAlign: 'left'
+            }}>
               <div>
-                <div className="w-12 h-12 bg-primary-blue bg-opacity-10 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                  <span className="text-xl">1️⃣</span>
-                </div>
-                <h4 className="font-semibold mb-2">Get Tracking ID</h4>
-                <p className="text-sm text-gray-600">Your tracking ID was provided in your shipment confirmation email.</p>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 1rem',
+                  fontSize: '2rem'
+                }}>1️⃣</div>
+                <h4 style={{
+                  fontSize: '1.2rem',
+                  color: '#2d5a4a',
+                  marginBottom: '0.5rem',
+                  fontWeight: 'bold'
+                }}>Get Tracking ID</h4>
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: '#666'
+                }}>Your tracking ID was provided in your shipment confirmation email.</p>
               </div>
               <div>
-                <div className="w-12 h-12 bg-primary-red bg-opacity-10 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                  <span className="text-xl">2️⃣</span>
-                </div>
-                <h4 className="font-semibold mb-2">Enter ID</h4>
-                <p className="text-sm text-gray-600">Enter your tracking ID in the field above and click Track.</p>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  backgroundColor: 'rgba(244, 67, 54, 0.1)',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 1rem',
+                  fontSize: '2rem'
+                }}>2️⃣</div>
+                <h4 style={{
+                  fontSize: '1.2rem',
+                  color: '#2d5a4a',
+                  marginBottom: '0.5rem',
+                  fontWeight: 'bold'
+                }}>Enter ID</h4>
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: '#666'
+                }}>Enter your tracking ID in the field above and click Track.</p>
               </div>
               <div>
-                <div className="w-12 h-12 bg-primary-blue bg-opacity-10 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                  <span className="text-xl">3️⃣</span>
-                </div>
-                <h4 className="font-semibold mb-2">View Status</h4>
-                <p className="text-sm text-gray-600">Get real-time updates on your shipment location and ETA.</p>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 1rem',
+                  fontSize: '2rem'
+                }}>3️⃣</div>
+                <h4 style={{
+                  fontSize: '1.2rem',
+                  color: '#2d5a4a',
+                  marginBottom: '0.5rem',
+                  fontWeight: 'bold'
+                }}>View Status</h4>
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: '#666'
+                }}>Get real-time updates on your shipment location and ETA.</p>
               </div>
             </div>
           </div>
         )}
-      </div>
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }
